@@ -1,6 +1,30 @@
-*.pdf
+# Ignore LaTeX build files
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.synctex.gz
+*.toc
+*.out
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.lof
+*.lot
+*.run.xml
+*.xdv
+*.glo
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glsdefs
+*.bcf
+
+# The vscode config folder
+.vscode/
