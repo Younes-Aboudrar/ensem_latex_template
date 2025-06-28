@@ -1,0 +1,79 @@
+\newcommand\blankpage{
+    \clearpage
+    \thispagestyle{empty}%
+    \vspace*{\fill}
+    \begin{center}
+        \ifthenelse{\equal{\LanguageOption}{en}}{%
+            \textcolor{gray!50}{\textit{Page intentionally left blank.}}
+        }{%
+            \textcolor{gray!50}{\textit{Page laissée intentionnellement blanche.}}
+        }
+    \end{center}
+    \vspace*{\fill}
+    \clearpage
+} 
+
+\newcommand{\plainblankpage}{\thispagestyle{plain}\blankpage}
+
+\newcommand{\guideinfo}[1]{%
+    \ifthenelse{\equal{\LanguageOption}{en}}{%
+        \noindent\textcolor{note}{\faInfoCircle\ \textbf{Writing Guidance}}%
+    }{
+        \noindent\textcolor{note}{\faInfoCircle\ \textbf{Guide de rédaction}}%
+    }
+    \\[.55em]%
+    \noindent #1%
+}
+
+\newcommand{\exampleinfo}[1]{%
+    \ifthenelse{\equal{\LanguageOption}{en}}{%
+        \noindent\textcolor{black}{\faInfoCircle\ \textbf{Usage Example}}%
+    }{
+        \noindent\textcolor{black}{\faInfoCircle\ \textbf{Exemple d'utilisation}}%
+    }
+    \\[.55em]%
+    \noindent #1%
+}
+
+\NewDocumentCommand{\keywordsen}{m}{\vspace{.4cm}\noindent\textbf{Keywords:} #1}
+\NewDocumentCommand{\keywordsfr}{m}{\vspace{.4cm}\noindent\textbf{Mots-clés:} #1}
+
+\def\ifGm@preamble#1{\@firstofone}
+\appto\restoregeometry{%
+    \pdfpagewidth=\paperwidth
+    \pdfpageheight=\paperheight}
+\apptocmd\newgeometry{%
+    \pdfpagewidth=\paperwidth
+    \pdfpageheight=\paperheight}{}{}
+\newenvironment{landscapemode}[2]{%
+    \newgeometry{paperwidth=#1,paperheight=#2,hmargin=3cm,vmargin=5cm,top=3cm,landscape}
+    \fancyheadoffset{0pt}
+    %\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+}{%
+    \restoregeometry
+    \fancyheadoffset{0pt}
+}
+
+\newtcolorbox[auto counter,number within=section]{block}[1][]{
+    enhanced jigsaw,
+    coltitle=#1,
+    colback=#1!08!white,
+    colframe=#1!08!white,
+    fonttitle=\latofont\bfseries,
+    sharp corners=west,
+    detach title,
+    borderline west={.85mm}{0pt}{#1},
+    pad at break=1mm,
+    top=4mm,
+    bottom=4mm,
+    title={\ifstrequal{#1}{todo}{To-Do}{\capitalisewords{#1}}},
+    code={\ifdefempty{\tcbtitletext}{}{\tcbset{before upper={\tcbtitle\par\medskip}}}},
+}
+
+\addto\extrasenglish{\def\figureautorefname{Figure}}
+\addto\extrasenglish{\def\chapterautorefname{Chapter}}
+\addto\extrasenglish{\def\sectionautorefname{Section}}
+\addto\extrasenglish{\def\subsectionautorefname{Section}}
+\addto\extrasenglish{\def\subsubsectionautorefname{Section}}
+\addto\extrasenglish{\def\tableautorefname{Table}}
+\addto\extrasenglish{\def\partautorefname{Part}}

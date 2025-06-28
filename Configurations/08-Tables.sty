@@ -1,0 +1,18 @@
+\newcommand{\customtableformatting}{\renewcommand{\arraystretch}{1.1}\small}
+\AtBeginEnvironment{tabular}{\customtableformatting}
+\AtBeginEnvironment{tabularx}{\customtableformatting}
+\preto\longtable{\customtableformatting}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\captionsetup{skip=6pt}
+\captionsetup{
+    labelfont={bf,small},
+    textfont={it,small}
+}
+\captionsetup[table]{skip=4pt}
+
+\setlist{noitemsep}

@@ -1,5 +1,19 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,11pt,titlepage,twoside,openany]{report}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage[firstpage = true]{background}
+\backgroundsetup{
+    scale = 1,
+    angle = 0,
+    opacity = 1,
+    contents = {
+        \includegraphics[scale = 1]{FirstPage.pdf}
+    }
+}
+
 
 \begin{document}
 Test
+\newpage
+\lipsum[1-10]
 \end{document}
